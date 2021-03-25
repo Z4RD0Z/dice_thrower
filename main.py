@@ -1,9 +1,9 @@
-from dice_throwers import DiceThrower
+from dice_throwers import DiceThrowerFactory
 
 ready = True
 game_type = "savage"
 
-dice_thrower = DiceThrower(game_type)
+dice_thrower = DiceThrowerFactory.create_thrower(game_type)
 
 while ready != False:
     dice = input("roll-> ")
