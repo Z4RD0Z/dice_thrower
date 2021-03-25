@@ -3,7 +3,7 @@ from dice_throwers import DiceThrower
 ready = True
 game_type = "savage"
 
-dice_thrower = DiceThrower()
+dice_thrower = DiceThrower(game_type)
 
 while ready != False:
     dice = input("roll-> ")
