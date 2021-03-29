@@ -8,10 +8,10 @@ class DiceThrower(object):
         dice_type = re.findall(r"d(\d+)", dice_string)
         dice_sign = re.findall(r"[\+\.][1-9]", dice_string)
         if dice_sign == []:
-            dice_sign.append(0)
+            for number in dice_number:
+                dice_sign.append(0)
 
         dice_number_type = zip(dice_number, dice_type, dice_sign)
-
         result = self.launch_dice(dice_number_type)
 
         return result
@@ -23,7 +23,6 @@ class DiceThrower(object):
         for number, d_type, d_sign in dice_number_type:
 
             if number != None and d_type != None:
-
                 total = 0
                 for n in range(0, int(number)):
                     if d_type == "4":
