@@ -52,8 +52,8 @@ class DiceThrower(object):
                         result.append(
                             f"total with mod-> {total - int(d_sign.replace('+', ''))}"
                         )
-                    else:
-                        result.append(f"total without mod -> {total}")
+                else:
+                    result.append(f"total without mod -> {total}")
 
         return result
 
@@ -71,7 +71,7 @@ class SavageDiceThrower(DiceThrower):
 class DiceThrowerFactory(object):
     @staticmethod
     def create_thrower(game_type):
-        if game_type == "savage":
+        if game_type == "Savage":
             return SavageDiceThrower()
         elif game_type == "Cthulhu":
             pass
