@@ -5,9 +5,9 @@ name: Python application
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ main ]
   pull_request:
-    branches: [ develop ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -34,15 +34,5 @@ jobs:
     - name: Test with pytest
       run: |
         pytest -q --game_type=Savage test.py
-    - name : Set Git config
-      run: |
-        git config --local user.email "elaphe@outlook.com"
-        git config --local user.name "Github Actions"
-    - name: Merge develop into master
-      run: |
-        git fetch --unshallow
-        git checkout master
-        git pull 
-        git merge --no-ff develop -m "Auto merge into master from develop"
-        git push 
+    
 
