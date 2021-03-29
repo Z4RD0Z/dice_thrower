@@ -1,6 +1,11 @@
-import random
+from dice_throwers import DiceThrowerFactory
+from cli import type_list
+import inquirer
 
 ready = True
+game_type = inquirer.prompt(type_list)
+print(game_type)
+dice_thrower = DiceThrowerFactory.create_thrower(game_type['game'])
 
 while ready != False:
     dice = input("roll-> ")
@@ -8,13 +13,6 @@ while ready != False:
     if dice == "exit" or dice == "EXIT":
         ready = False
 
-    numbers = dice.split('d')
-    result = []
-
-    print(numbers[0])
-
-    for number in numbers[0]:
-        if "d6" in dice:
-            result.append(f"{random.randrange(1, 7)}, ")
+    result = dice_thrower.parse_dice_string(dice)
 
     print(result)
