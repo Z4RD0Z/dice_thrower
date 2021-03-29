@@ -3,7 +3,7 @@ import os
 import discord
 from dotenv import load_dotenv
 from dice_throwers import DiceThrowerFactory
-
+from utils import help_message
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
@@ -25,7 +25,11 @@ async def on_message(message):
         await message.channel.send(response)
     
     if "help" in message.content:
-        response = "LISTA DI COMANDI HELP"
+        response = help_message
+        await message.channel.send(response)
+
+    if "e1m1" in message.content:
+        response = "!play https://www.youtube.com/watch?v=qsjHbxVI3EI"
         await message.channel.send(response)
 
 client.run(TOKEN)
