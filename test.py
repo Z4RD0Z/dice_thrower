@@ -39,6 +39,6 @@ def test_multiple_dice_type_without_mod(game_type):
 
 def test_multiple_dice_type_with_mod(game_type):
     dice_thrower = DiceThrowerFactory.create_thrower(game_type)
-    result = dice_thrower.parse_dice_string("2d6+1 2d4+1")
+    result = dice_thrower.parse_dice_string("2d6+1 2d3+1")
     assert any("total with mod" in string for string in result)
     assert sum('total with mod' in string for string in result) >= 2
