@@ -5,7 +5,7 @@ def pytest_addoption(parser):
     parser.addoption("--game_type",
                      action="store",
                      default="simple",
-                     help="Set game tye, default is simple")
+                     help="Set game type, default is simple")
 
 
 @pytest.fixture
