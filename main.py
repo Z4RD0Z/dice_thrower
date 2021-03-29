@@ -1,9 +1,11 @@
 from dice_throwers import DiceThrowerFactory
+from cli import type_list
+import inquirer
 
 ready = True
-game_type = "savage"
-
-dice_thrower = DiceThrowerFactory.create_thrower(game_type)
+game_type = inquirer.prompt(type_list)
+print(game_type)
+dice_thrower = DiceThrowerFactory.create_thrower(game_type['game'])
 
 while ready != False:
     dice = input("roll-> ")
