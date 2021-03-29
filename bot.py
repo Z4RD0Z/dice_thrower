@@ -23,6 +23,9 @@ async def on_message(message):
         print(dice_value)
         response = dice_thrower.parse_dice_string(dice_value[1])
         await message.channel.send(response)
-
+    
+    if "help" in message.content:
+        response = "LISTA DI COMANDI HELP"
+        await message.channel.send(response)
 
 client.run(TOKEN)
