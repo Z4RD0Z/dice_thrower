@@ -37,6 +37,8 @@ class DiceThrower(object):
                         dice_result = random.randrange(1, 13)
                     if d_type == "20":
                         dice_result = random.randrange(1, 21)
+                    if d_type == "100":
+                        dice_result = random.randrange(1, 101)
 
                     total += dice_result
 
@@ -66,10 +68,13 @@ class SavageDiceThrower(DiceThrower):
 
         return result
 
-class CthulhuDiceThrower(DiceThrower):
 
+class CthulhuDiceThrower(DiceThrower):
     def parse_dice_string(self, dice_string):
-        pass
+        if dice_string == "action":
+            return f"result -> {random.randrange(1,101)}"
+        else:
+            return super().parse_dice_string(dice_string)
 
 
 class DiceThrowerFactory(object):
@@ -77,5 +82,7 @@ class DiceThrowerFactory(object):
     def create_thrower(game_type):
         if game_type == "Savage":
             return SavageDiceThrower()
-        elif game_type == "Cthulhu":
-            pass
+        elif game_type == "CoC":
+            return CthulhuDiceThrower()
+        elif game_type == "Simple":
+            return DiceThrower()
