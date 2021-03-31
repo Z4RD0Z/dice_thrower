@@ -66,6 +66,11 @@ class SavageDiceThrower(DiceThrower):
 
         return result
 
+class CthulhuDiceThrower(DiceThrower):
+
+    def parse_dice_string(self, dice_string):
+        pass
+
 
 class DiceThrowerFactory(object):
     @staticmethod
