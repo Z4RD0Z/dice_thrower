@@ -11,7 +11,7 @@ GUILD = os.getenv('DISCORD_GUILD')
 
 client = discord.Client()
 
-dice_thrower = DiceThrowerFactory.create_thrower('Savage')
+dice_thrower = DiceThrowerFactory.create_thrower('Simple')
 
 
 @client.event
