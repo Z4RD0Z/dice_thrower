@@ -13,26 +13,27 @@ client = discord.Client()
 
 dice_thrower = DiceThrowerFactory.create_thrower('Simple')
 
+accepted_channels = [int(os.getenv('BOT_CHANNEL_ID')),]
 
 @client.event
 async def on_message(message):
     if message.author == client.user:
         return
+    if message.channel.id in accepted_channels:
+        if "roll" in message.content:
+            print("ok")
+            dice_value = message.content.split("roll")
+            print(dice_value)
+            response = dice_thrower.parse_dice_string(dice_value[1])
+            await message.channel.send(response)
 
-    if "roll" in message.content:
-        print("ok")
-        dice_value = message.content.split("roll")
-        print(dice_value)
-        response = dice_thrower.parse_dice_string(dice_value[1])
-        await message.channel.send(response)
+        if "help" in message.content:
+            response = help_message
+            await message.channel.send(response)
 
-    if "help" in message.content:
-        response = help_message
-        await message.channel.send(response)
-
-    if "e1m1" in message.content:
-        response = "!play https://www.youtube.com/watch?v=qsjHbxVI3EI"
-        await message.channel.send(response)
+        if "e1m1" in message.content:
+            response = "!play https://www.youtube.com/watch?v=qsjHbxVI3EI"
+            await message.channel.send(response)
 
     if "change_game" in message.content:
         pass
